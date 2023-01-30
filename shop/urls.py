@@ -1,6 +1,8 @@
+from tokenize import Single
 from django.urls import path
-from .views import CustomerView
+from .views import CustomersView,SingleCustomer
 
 urlpatterns = [
-    path('list/',CustomerView.as_view())
+    path('list/',CustomersView.as_view()),
+    path('list/<int:id>/',SingleCustomer.as_view()),
 ]

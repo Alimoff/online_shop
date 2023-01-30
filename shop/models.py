@@ -1,5 +1,6 @@
-from tabnanny import verbose
+
 from django.db import models
+
 
 # Create your models here.
 class  Customer(models.Model):
@@ -20,3 +21,13 @@ class  Customer(models.Model):
     class Meta:
         verbose_name = 'Customer'
         verbose_name_plural = 'Customers'
+
+
+class Orders(models.Model):
+    customer_id = models.ForeignKey(Customer,on_delete=models.CASCADE,null=True,related_name='customer')
+    product_id = models.CharField(max_length=6)
+    quantity = models.CharField(max_length=3)
+    status = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.status
